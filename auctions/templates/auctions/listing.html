@@ -1,0 +1,57 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Listing
+{% endblock %}
+
+{% block body %}
+    <center>
+    
+
+        <h2>{{ listing.title }}</h2>
+
+        <img src="{{ listing.photo_url }}" alt="image" style="width: 300px; height: auto">
+        <p>{{ listing.description }}</p>
+        <p>Current offer: ${{ listing.starting_bid }}</p>
+        
+        <a type="button" href = "{% url 'add-bid' listing.pk %}" class="btn btn-primary" style = "color: black;">Bid</a>
+        <a type="button" href = "{% url 'add-comment' listing.pk %}" class="btn btn-primary" style = "color: black;">Comment</a>
+        {% if user == listing.user %}
+        <form action="/delete.html">
+            <a type="button" href = "{% url 'close-listing' listing.pk %}" class="btn btn-primary" style = "color: black;">Close Listing</a>
+        </form>
+        {% endif %}
+        <form action="/watchlist.html">
+            {% csrf_token %}
+            <a type="button" href = "{% url 'add-watchlist' listing.pk %}" class="btn btn-primary" style = "color: black;">Add to watchlist</a>
+        </form>
+    </center>
+
+
+    <hr>
+
+    <h3>Comments</h3>
+    <br/>
+
+    {% if not listing.comments.all %}
+        Be the first to comment!
+    {% else %}
+        {% for comment in listing.comments.all %}
+        <div class="col-auto mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <strong>{{comment.author}}</strong> 
+                    --
+                    {{comment.date}}
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{comment.body}}</p>
+                </blockquote>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
