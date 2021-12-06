@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Create a new listing
+{% endblock %}
+
+{% block body %}
+    <center>
+        <h2>Create a new listing</h2>
+        {% if submitted %}
+        <div class="alert alert-success" role="alert">
+            "Your listing was created!"
+        </div>
+        {% endif %}
+        <form action = "" method = POST>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="create listing" class="btn btn-secondary">
+        </form>
+    </center>
+{% endblock %}
