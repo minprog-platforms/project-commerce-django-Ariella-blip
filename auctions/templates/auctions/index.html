@@ -1,7 +1,26 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <center>
+        <h2>Active Listings</h2>
+      
+        {% for listing in object_list %}
+          <div class="col-auto mb-4">
+            <div class="card" style="width: 18rem;">
+              <img src="{{ listing.photo_url }}" alt="image" style="width: 275px; height: auto">
+              <div class="card-body">
+                <h5 class="card-title">{{ listing.title }}</h5>
+                <p class="card-text">{{ listing.description }}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Current offer: ${{ listing.starting_bid }}</li>
+              </ul>
+              <div class="card-body">
+                <a href="{% url 'listing-page' listing.pk %}"class= "card-link">Go To Listing</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
 
-    TODO
+    </center>
 {% endblock %}
