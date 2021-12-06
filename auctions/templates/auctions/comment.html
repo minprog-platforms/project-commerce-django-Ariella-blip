@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Post a new comment
+{% endblock %}
+
+{% block body %}
+    <center>
+
+        <h2>Post a new comment</h2>
+
+    </br>
+
+    {% if submitted %}
+    <div class="alert alert-success" role="alert">
+        "Your comment was added!"
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        "Your comment was empty!"
+    </div>
+    {% endif %}
+
+        <div class='form-group'>
+            <form method = "POST" name="comment">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add" class="btn btn-secondary">
+                <input type="submit" value="Go Back" class="btn btn-secondary" name = "go_back_button">
+            </form>
+
+        </div>
+
+    </center>
+{% endblock %}
