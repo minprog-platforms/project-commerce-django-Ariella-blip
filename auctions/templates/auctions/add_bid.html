@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+{% if message %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endif %}
+<form method = "POST" name="bidq">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Go Back" class="btn btn-secondary" name = "go_back_button">
+    <input type="submit" value="Add" class="btn btn-secondary">
+</form>
+
+{% endblock %}
