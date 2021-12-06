@@ -49,7 +49,7 @@ The user gets a list of all categories with links to their category pages.
 category.html:
 When clicking on the category, the user is taken to a page where all the listings in that category are listed.
 
-![alt text](https://github.com/minprog-platforms/project-commerce-django-Ariella-blip/blob/main/Schetsen/commerce:my-watchlist.png):
+![alt text](https://github.com/minprog-platforms/project-commerce-django-Ariella-blip/blob/main/Schetsen/commerce:my-watchlist.png)
 
 watchlist.html:
 After clicking on "my watchlist" in the menu bar the user is taken to a page where all their watchlist listings are displayed with links to their corresponding pages.
